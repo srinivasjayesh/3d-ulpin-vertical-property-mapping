@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D ULPIN Hyderabad — Vertical Property Mapping & Cadastre Prototype</title>
+    
+    <!-- Mapbox GL JS Stylesheet & Script -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
+
+    <!-- Custom Dashboard Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Configuration Loaders -->
+    <script src="config.example.js"></script>
+    <script src="config.js" onerror="console.warn('config.js not found, falling back to config.example.js')"></script>
+
+    <!-- Import Map for Three.js ES Modules -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- TOP BAR NAVIGATION -->
+    <header class="top-bar">
+        <div class="brand-section">
+            <div class="brand-icon">3D</div>
+            <div>
+                <h1 class="brand-title">3D ULPIN HYDERABAD</h1>
+                <p class="brand-subtitle">Vertical Property Mapping & Volumetric Cadastre Prototype</p>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="counter-osm-buildings">635</span>
+                <span class="stat-label">Study-Area Buildings</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="counter-hero-buildings">3</span>
+                <span class="stat-label">3D Hero Buildings</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="counter-floor-units">43</span>
+                <span class="stat-label">Vertical Floor Units</span>
+            </div>
+        </div>
+
+        <div class="badges-bar">
+            <span class="source-badge badge-osm">🌐 OSM Footprint</span>
+            <span class="source-badge badge-cadastral">📜 TGRAC BhuNaksha Parcel</span>
+            <span class="source-badge badge-satellite">🛰️ Google Open Buildings Height</span>
+        </div>
+    </header>
+
+    <!-- MAIN 3-COLUMN DASHBOARD CONTAINER -->
+    <main class="dashboard-container">
+
+        <!-- LEFT PANEL - 2D MAP -->
+        <section class="panel">
+            <div class="panel-header">
+                <span class="panel-title"><span class="panel-title-icon">🗺️</span> 2D Cadastral & Building Map</span>
+                <span class="stat-label" style="font-size:10px;">EPSG:4326 / EPSG:32644</span>
+            </div>
+            <div class="panel-content">
+                <div id="map-banner" class="map-overlay-banner"></div>
+                <div id="map2d"></div>
+
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-b0595);"></div>
+                        <span>B0595 (Office Tower)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-b0612);"></div>
+                        <span>B0612 (Apartments)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-b0162);"></div>
+                        <span>B0162 (Residential)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-parcel); opacity: 0.8;"></div>
+                        <span>BhuNaksha Cadastral Parcel</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #334155;"></div>
+                        <span>OSM Context Footprint (635)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CENTER PANEL - THREE.JS 3D VIEWER -->
+        <section class="panel">
+            <div class="panel-header">
+                <span class="panel-title"><span class="panel-title-icon">🏢</span> 3D Vertical Floor Viewer</span>
+                <span id="active-building-badge" class="source-badge badge-osm">Building: B0595</span>
+            </div>
+            <div class="panel-content">
+                <div class="viewer-actions">
+                    <button class="btn-action" id="btn-reset-camera">🎯 Reset Camera</button>
+                    <button class="btn-action" id="btn-view-all">🌐 Focus Building</button>
+                </div>
+
+                <div class="building-selector-bar">
+                    <button class="btn-building active" data-id="B0595">B0595 (23F)</button>
+                    <button class="btn-building" data-id="B0612">B0612 (18F)</button>
+                    <button class="btn-building" data-id="B0162">B0162 (2F)</button>
+                </div>
+
+                <div id="viewer3d"></div>
+
+                <div class="viewer-3d-hint">
+                    🖱️ Click floor to inspect dossier | Drag to rotate | Scroll to zoom
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL - PROPERTY DOSSIER -->
+        <section class="panel">
+            <div class="panel-header">
+                <span class="panel-title"><span class="panel-title-icon">📋</span> Property & Floor Dossier</span>
+            </div>
+            <div class="panel-content">
+                <div class="dossier-scroll-area" id="dossier-container">
+                    <!-- Dynamic dossier content populated by app.js -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Main JavaScript Application -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "hero_locations",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "building_id": "B0573", "building": "office", "building:levels": "15", "area_m2": 13788.73, "longitude": 78.345610775248275, "latitude": 17.419944254482466 }, "geometry": { "type": "Point", "coordinates": [ 78.345610775248275, 17.419944254482466 ] } },
+{ "type": "Feature", "properties": { "building_id": "B0595", "building": "office", "building:levels": "23", "area_m2": 5684.12, "longitude": 78.345129843826399, "latitude": 17.422454013246721 }, "geometry": { "type": "Point", "coordinates": [ 78.345129843826399, 17.422454013246721 ] } },
+{ "type": "Feature", "properties": { "building_id": "B0612", "building": "apartments", "building:levels": null, "area_m2": 8206.49, "longitude": 78.344312120103012, "latitude": 17.413888654894219 }, "geometry": { "type": "Point", "coordinates": [ 78.344312120103012, 17.413888654894219 ] } }
+]
+}

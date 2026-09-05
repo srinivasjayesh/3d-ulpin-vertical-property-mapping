@@ -1,0 +1,44 @@
+floor_id,building_id,floor_number,z_min_m,z_max_m,floor_height_m,footprint_area_m2,volume_m3,building_height_m,building_floor_count,height_source,floor_source,is_floor_estimated,vertical_confidence
+B0162-F001,B0162,1,0.0,3.75,3.75,8190.04,30712.64,7.5,2,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0162-F002,B0162,2,3.75,7.5,3.75,8190.04,30712.64,7.5,2,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0595-F001,B0595,1,0.0,3.46,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F002,B0595,2,3.46,6.91,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F003,B0595,3,6.91,10.37,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F004,B0595,4,10.37,13.83,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F005,B0595,5,13.83,17.28,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F006,B0595,6,17.28,20.74,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F007,B0595,7,20.74,24.2,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F008,B0595,8,24.2,27.65,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F009,B0595,9,27.65,31.11,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F010,B0595,10,31.11,34.57,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F011,B0595,11,34.57,38.02,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F012,B0595,12,38.02,41.48,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F013,B0595,13,41.48,44.93,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F014,B0595,14,44.93,48.39,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F015,B0595,15,48.39,51.85,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F016,B0595,16,51.85,55.3,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F017,B0595,17,55.3,58.76,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F018,B0595,18,58.76,62.22,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F019,B0595,19,62.22,65.67,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F020,B0595,20,65.67,69.13,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F021,B0595,21,69.13,72.59,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F022,B0595,22,72.59,76.04,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0595-F023,B0595,23,76.04,79.5,3.46,5684.12,19647.27,79.5,23,Google Open Buildings 2.5D Temporal 2023,OSM building:levels,False,high
+B0612-F001,B0612,1,0.0,2.97,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F002,B0612,2,2.97,5.94,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F003,B0612,3,5.94,8.92,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F004,B0612,4,8.92,11.89,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F005,B0612,5,11.89,14.86,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F006,B0612,6,14.86,17.83,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F007,B0612,7,17.83,20.81,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F008,B0612,8,20.81,23.78,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F009,B0612,9,23.78,26.75,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F010,B0612,10,26.75,29.72,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F011,B0612,11,29.72,32.69,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F012,B0612,12,32.69,35.67,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F013,B0612,13,35.67,38.64,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F014,B0612,14,38.64,41.61,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F015,B0612,15,41.61,44.58,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F016,B0612,16,44.58,47.56,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F017,B0612,17,47.56,50.53,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium
+B0612-F018,B0612,18,50.53,53.5,2.97,8206.49,24391.51,53.5,18,Google Open Buildings 2.5D Temporal 2023,Estimated from Google height (~3m/floor),True,medium

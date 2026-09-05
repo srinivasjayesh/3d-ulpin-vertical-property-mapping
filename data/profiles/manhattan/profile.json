@@ -1,0 +1,31 @@
+{
+  "profile_id": "manhattan",
+  "label": "Manhattan",
+  "study_area": "Hudson Yards / West Midtown",
+  "bbox": [
+    40.752,
+    -74.0055,
+    40.759,
+    -73.995
+  ],
+  "center": [
+    40.7555,
+    -74.0002
+  ],
+  "map_zoom": 16,
+  "default_hero": "NYC-B107",
+  "hero_buildings": [
+    "NYC-B107",
+    "NYC-B131",
+    "NYC-B121"
+  ],
+  "counts": {
+    "buildings": 133,
+    "tax_lots": 164,
+    "floors": 1827,
+    "units": 8130,
+    "vertical_buildings": 131
+  },
+  "unit_geometry_mode": "SYNTHETIC_UNIT_DEMO",
+  "prototype_uids_are_official": false
+}

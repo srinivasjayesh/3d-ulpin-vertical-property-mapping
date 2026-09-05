@@ -1,0 +1,36 @@
+hero_building_id,osm_type,osm_id,name,building,landuse,amenity,office,leisure,tourism,boundary,place,man_made,feature_area_m2,building_area_m2,area_ratio,intersects_building,contains_building,building_within,building_coverage_pct,distance_m,candidate_score
+B0612,,9832908,Gandipet mandal,,,,,,,administrative,,,106913527.36,8206.49,13027.92,True,True,True,100.0,0.0,70.0
+B0612,,1428244476,Vajras Jasmine County,apartments,,,,,,,,,8206.49,8206.49,1.0,True,True,True,100.0,0.0,65.0
+B0612,,1153101612,,,commercial,,,,,,,,20017.21,8206.49,2.44,False,False,False,0.0,41.82,35.0
+B0612,,1414567662,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,30.64,25.0
+B0612,,1414567663,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,104.91,25.0
+B0612,,356284178,,yes,,,,,,,,,54.37,8206.49,0.01,False,False,False,0.0,12.91,25.0
+B0612,,342034211,,,grass,,,,,,,,738.27,8206.49,0.09,False,False,False,0.0,65.13,25.0
+B0612,,1414567645,,yes,,,,,,,,,301.37,8206.49,0.04,False,False,False,0.0,38.32,25.0
+B0612,,1120726054,,,construction,,,,,,,,34927.19,8206.49,4.26,False,False,False,0.0,41.5,25.0
+B0612,,1414567647,,yes,,,,,,,,,301.37,8206.49,0.04,False,False,False,0.0,64.63,25.0
+B0612,,342034212,,commercial,,,,,,,,,1134.89,8206.49,0.14,False,False,False,0.0,96.22,25.0
+B0612,,1414567650,,yes,,,,,,,,,301.37,8206.49,0.04,False,False,False,0.0,70.85,25.0
+B0612,,1414567651,,yes,,,,,,,,,301.51,8206.49,0.04,False,False,False,0.0,83.13,25.0
+B0612,,1414567648,,yes,,,,,,,,,301.37,8206.49,0.04,False,False,False,0.0,81.77,25.0
+B0612,,1414567649,,yes,,,,,,,,,301.37,8206.49,0.04,False,False,False,0.0,60.02,25.0
+B0612,,1414567652,,yes,,,,,,,,,301.51,8206.49,0.04,False,False,False,0.0,95.89,25.0
+B0612,,1414567653,,yes,,,,,,,,,359.77,8206.49,0.04,False,False,False,0.0,113.46,25.0
+B0612,,1414567654,,yes,,,,,,,,,359.86,8206.49,0.04,False,False,False,0.0,99.42,25.0
+B0612,,1414567646,,yes,,,,,,,,,301.44,8206.49,0.04,False,False,False,0.0,51.04,25.0
+B0612,,1414567666,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,64.39,25.0
+B0612,,1414567667,,yes,,,,,,,,,260.46,8206.49,0.03,False,False,False,0.0,73.05,25.0
+B0612,,1414567657,,yes,,,,,,,,,260.46,8206.49,0.03,False,False,False,0.0,94.61,25.0
+B0612,,1414567655,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,114.56,25.0
+B0612,,1414567659,,yes,,,,,,,,,260.46,8206.49,0.03,False,False,False,0.0,46.06,25.0
+B0612,,1414567660,,yes,,,,,,,,,260.46,8206.49,0.03,False,False,False,0.0,22.71,25.0
+B0612,,1414567661,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,21.12,25.0
+B0612,,1414567658,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,23.06,25.0
+B0612,,1414567668,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,81.26,25.0
+B0612,,1414567669,,yes,,,,,,,,,535.96,8206.49,0.07,False,False,False,0.0,92.77,25.0
+B0612,,1414567665,,yes,,,,,,,,,260.46,8206.49,0.03,False,False,False,0.0,87.75,25.0
+B0612,,1414567664,,yes,,,,,,,,,260.36,8206.49,0.03,False,False,False,0.0,95.46,25.0
+B0612,,1120726056,,,residential,,,,,,,,64414.51,8206.49,7.85,False,False,False,0.0,7.28,15.0
+B0612,,7868535,Hyderabad,,,,,,,administrative,,,609597260.38,8206.49,74282.33,True,False,False,1.16,0.0,0.69
+B0612,,16460488,Greater Hyderabad Municipal Corporation West Zone,,,,,,,administrative,,,169535605.81,8206.49,20658.72,True,False,False,1.16,0.0,0.69
+B0612,,9832843,Serilingampalle mandal,,,,,,,administrative,,,96593109.7,8206.49,11770.33,False,False,False,0.0,33.04,0.0

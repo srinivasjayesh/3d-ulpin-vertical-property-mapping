@@ -1,0 +1,11 @@
+hero_building_id,osm_type,osm_id,name,building,landuse,amenity,office,leisure,tourism,boundary,place,man_made,feature_area_m2,building_area_m2,area_ratio,intersects_building,contains_building,building_within,building_coverage_pct,distance_m,candidate_score
+B0589,,1212211119,,,commercial,,,,,,,,9468.11,4192.91,2.26,True,True,True,100.0,0.0,105.0
+B0589,,7868535,Hyderabad,,,,,,,administrative,,,609597260.38,4192.91,145387.72,True,True,True,100.0,0.0,70.0
+B0589,,16460488,Greater Hyderabad Municipal Corporation West Zone,,,,,,,administrative,,,169535605.81,4192.91,40433.9,True,True,True,100.0,0.0,70.0
+B0589,,1212211120,Apollo Hospitals,construction,,,,,,,,,4192.91,4192.91,1.0,True,True,True,100.0,0.0,65.0
+B0589,,1212211118,,,commercial,,,,,,,,5190.37,4192.91,1.24,False,False,False,0.0,15.63,35.0
+B0589,,1212211123,,,commercial,,,,,,,,9129.7,4192.91,2.18,False,False,False,0.0,97.19,35.0
+B0589,,1212211121,,yes,,,,,,,,,2017.22,4192.91,0.48,False,False,False,0.0,22.87,25.0
+B0589,,1534512662,,yes,,,,,,,,,225.31,4192.91,0.05,False,False,False,0.0,77.09,25.0
+B0589,,1534512663,,yes,,,,,,,,,414.47,4192.91,0.1,False,False,False,0.0,56.18,25.0
+B0589,,1212211122,One West - Terminus,office,,,,,,,,,4457.38,4192.91,1.06,False,False,False,0.0,107.14,5.0

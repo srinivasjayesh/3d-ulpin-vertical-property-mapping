@@ -1,0 +1,50 @@
+# Local Python environments and tooling
+.runtime/
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration, credentials, and generated logs
+.env
+.env.*
+!.env.example
+*.log
+*.local
+dashboard/config.js
+
+# Caches, scratch output, and local backups
+cache/
+backups/
+.codex/
+.DS_Store
+Thumbs.db
+
+# Large or source-only geospatial inputs
+data/**/*.tif
+data/**/*.tiff
+data/**/*.las
+data/**/*.laz
+data/**/*.ifc
+data/**/raw/
+
+# Telangana cadastral snapshots: source license does not grant clear
+# redistribution permission. Regenerate locally with the pipeline instead.
+data/study_area_cadastral_parcels.geojson
+data/hero_parcels.geojson
+data/cadastral_layer_test/*.geojson
+data/study_area_scouting/**/parcels.geojson
+
+# Database exports and local stores
+*.dump
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+*.bak

@@ -1,0 +1,26 @@
+hero_building_id,osm_type,osm_id,name,building,landuse,amenity,office,leisure,tourism,boundary,place,man_made,feature_area_m2,building_area_m2,area_ratio,intersects_building,contains_building,building_within,building_coverage_pct,distance_m,candidate_score
+B0595,,1222803959,Vamsiram Jyothi Techpark,office,,,,,,,,,5684.12,5684.12,1.0,True,True,True,100.0,0.0,65.0
+B0595,,1153111200,,,commercial,,,,,,,,9011.79,5684.12,1.59,False,False,False,0.0,59.97,35.0
+B0595,,139444438,Trendset Winz,,residential,,,,,,,,27953.09,5684.12,4.92,False,False,False,0.0,34.26,25.0
+B0595,,139444435,Virtusa Corporation,,commercial,,,,,,,,25522.3,5684.12,4.49,False,False,False,0.0,56.38,25.0
+B0595,,342033958,Block G,apartments,,,,,,,,,1120.4,5684.12,0.2,False,False,False,0.0,47.0,25.0
+B0595,,342033959,Block F,apartments,,,,,,,,,1184.22,5684.12,0.21,False,False,False,0.0,55.49,25.0
+B0595,,342033960,Block E,apartments,,,,,,,,,1085.98,5684.12,0.19,False,False,False,0.0,87.22,25.0
+B0595,,342033505,,commercial,,,,,,,,,4716.61,5684.12,0.83,False,False,False,0.0,75.51,25.0
+B0595,,6162857,,yes,,,,,,,,,165.19,5684.12,0.03,False,False,False,0.0,69.59,25.0
+B0595,,357425166,,yes,,,,,,,,,89.8,5684.12,0.02,False,False,False,0.0,50.75,25.0
+B0595,,342033965,Pool & Gym,yes,,,,,,,,,589.99,5684.12,0.1,False,False,False,0.0,105.79,25.0
+B0595,,357425175,,yes,,,,,,,,,53.44,5684.12,0.01,False,False,False,0.0,28.42,25.0
+B0595,,357425178,,yes,,,,,,,,,52.91,5684.12,0.01,False,False,False,0.0,37.21,25.0
+B0595,,684434032,ZF India ITC U1,,commercial,,,,,,,,3628.54,5684.12,0.64,False,False,False,0.0,17.93,25.0
+B0595,,686323555,,yes,,,,,,,,,137.15,5684.12,0.02,False,False,False,0.0,100.6,25.0
+B0595,,626147565,,yes,,,,,,,,,2567.28,5684.12,0.45,False,False,False,0.0,100.61,25.0
+B0595,,684386313,,commercial,,,,,,,,,1696.2,5684.12,0.3,False,False,False,0.0,27.79,25.0
+B0595,,1380631090,,yes,,,,,,,,,135.5,5684.12,0.02,False,False,False,0.0,42.53,25.0
+B0595,,1133394530,Sohini Tech Park,commercial,,,,,,,,,3365.41,5684.12,0.59,False,False,False,0.0,82.53,25.0
+B0595,,1273253241,,,,,,garden,,,,,2970.28,5684.12,0.52,False,False,False,0.0,52.21,25.0
+B0595,,1235251874,Vamsiram SD Tech Park,yes,,,,,,,,,3092.17,5684.12,0.54,False,False,False,0.0,56.33,25.0
+B0595,,1380631091,,yes,,,,,,,,,91.19,5684.12,0.02,False,False,False,0.0,27.11,25.0
+B0595,,782009439,Amazon Hyderabad Campus,,commercial,,company,,,,,,41656.32,5684.12,7.33,False,False,False,0.0,114.4,15.0
+B0595,,1153101605,,,construction,,,,,,,,54186.9,5684.12,9.53,False,False,False,0.0,77.38,15.0
+B0595,,1235251873,BSR Tech Park Block 1,yes,,,,,,,,,5631.94,5684.12,0.99,False,False,False,0.0,52.42,-5.0

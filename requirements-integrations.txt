@@ -1,0 +1,6 @@
+# Optional integrations implemented by this repository.
+psycopg[binary]>=3.2,<4
+ifcopenshell>=0.8,<1
+laspy[lazrs]>=2.5,<3
+
+# PDAL remains optional and requires a compatible native PDAL installation.
