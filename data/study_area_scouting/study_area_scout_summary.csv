@@ -1,6 +1,0 @@
-total_buildings,total_parcels,plot_like,site_parcel,large_survey,multi_building,no_reliable,good_match_rate_pct,median_parcel_building_ratio,median_parcel_occupancy_pct,score,area,latitude,longitude
-443,78,2,3,10,380,48,1.13,231.82,0.43,25.1,Kondapur,17.458791,78.373056
-773,1,0,0,0,773,0,0.0,108912.85,0.0,25.0,Tellapur,17.465491,78.286348
-1334,110,0,2,15,1240,77,0.15,285.83,0.35,24.7,Nallagandla,17.477483,78.306036
-1286,29,0,1,2,1229,54,0.08,4948.11,0.02,24.66,Miyapur,17.498161,78.356763
-1489,87,0,2,8,1370,109,0.13,1036.56,0.1,24.45,Manikonda,17.399995,78.386169

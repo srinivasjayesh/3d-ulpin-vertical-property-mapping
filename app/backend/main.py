@@ -91,6 +91,7 @@ def capabilities(profile: str | None = None):
     elevation = elevation_adapter.capability()
     bim = bim_adapter.capability()
     lidar = LiDARAdapter(ROOT / "data" / "lidar" / profile_id).capability()
+    opentopography_key_configured = bool(os.getenv("OPENTOPOGRAPHY_API_KEY"))
     if profile_id == "manhattan":
         sources = {
             "NYC Tax Lots": "ACTIVE",
@@ -110,6 +111,17 @@ def capabilities(profile: str | None = None):
         }
         ground_elevation = "PENDING"
         unit_geometry = "NOT_AVAILABLE"
+    elif profile_id == "amsterdam":
+        sources = {
+            "PDOK BAG Buildings": "OPEN_DATA_REGENERATION_READY",
+            "PDOK BGT Topography": "OPEN_DATA_REGENERATION_READY",
+            "PDOK Cadastral Parcels": "OPEN_DATA_REGENERATION_READY",
+            "AHN LiDAR/DEM/DSM": "OPEN_DATA_REGENERATION_READY",
+            "PDOK RGB Orthophoto": "OPEN_DATA_REGENERATION_READY",
+            "CBS/PDOK Administrative Areas": "OPEN_DATA_REGENERATION_READY",
+        }
+        ground_elevation = "OPEN_DATA_REGENERATION_READY"
+        unit_geometry = "NOT_AVAILABLE"
     else:
         sources = {"OSM": "ACTIVE", "BhuNaksha": "ACTIVE", "Google 2.5D": "ACTIVE"}
         ground_elevation = "PENDING"
@@ -122,6 +134,12 @@ def capabilities(profile: str | None = None):
         "provider_fallback_reason": selected.fallback_reason,
         "postgis": "ACTIVE" if postgis.get("status") == "ACTIVE" else "CODE_READY",
         "dem": "ACTIVE" if elevation["status"] == "ACTIVE" else "PENDING",
+        "opentopography": (
+            "DEM_DOWNLOAD_READY"
+            if opentopography_key_configured
+            else "DEM_API_KEY_REQUIRED"
+        ),
+        "opentopography_scope": "GLOBAL_DEM_DSM_RASTER_ONLY_NOT_LIDAR",
         "ground_elevation": ground_elevation,
         "bim": "LOADED" if bim["status"] == "BIM_LOADED" else (
             "NOT_LOADED" if profile_id == "hyderabad" else "ADAPTER_READY_NOT_LOADED"
@@ -129,6 +147,7 @@ def capabilities(profile: str | None = None):
         "lidar": "LOADED" if lidar["status"] == "LIDAR_LOADED" else (
             "NOT_LOADED" if profile_id == "hyderabad" else "ADAPTER_READY_NOT_LOADED"
         ),
+        "lidar_scope": "LAS_LAZ_POINT_CLOUD_REQUIRED_FOR_LIDAR_MEASUREMENTS",
         "unit_geometry": unit_geometry,
         "absolute_z": "SOURCE_ATTRIBUTE_AVAILABLE" if profile_id == "manhattan" else (
             "ACTIVE" if elevation["status"] == "ACTIVE" else "RELATIVE_Z_ONLY"
@@ -138,6 +157,12 @@ def capabilities(profile: str | None = None):
             "GeoPandas": "ACTIVE", "Shapely": "ACTIVE", "pyproj": "ACTIVE",
             "Rasterio": "ACTIVE", "FastAPI": "ACTIVE",
         },
+        "city_scale_delivery": {
+            "viewport_endpoint": "/api/buildings/viewport",
+            "file_mode": "BOUNDS_FILTERED",
+            "postgis_mode": "GIST_BBOX_WHEN_CONFIGURED",
+            "note": "Use bounded requests for city-scale display; a full-city request is not required.",
+        },
         "details": {"postgis": postgis, "dem": elevation, "bim": bim, "lidar": lidar},
     }
 
@@ -145,6 +170,23 @@ def capabilities(profile: str | None = None):
 @app.get("/api/buildings")
 def get_buildings(status: str | None = None, profile: str | None = None):
     return provider_for(profile).buildings(status=status)
+
+
+@app.get("/api/buildings/viewport")
+def get_buildings_viewport(
+    west: float = Query(..., ge=-180, le=180),
+    south: float = Query(..., ge=-90, le=90),
+    east: float = Query(..., ge=-180, le=180),
+    north: float = Query(..., ge=-90, le=90),
+    limit: int = Query(2_000, ge=1, le=10_000),
+    status: str | None = None,
+    profile: str | None = None,
+):
+    if west >= east or south >= north:
+        raise HTTPException(status_code=422, detail="Viewport bounds must have west < east and south < north")
+    return provider_for(profile).buildings_in_viewport(
+        west, south, east, north, limit=limit, status=status
+    )
 
 
 @app.get("/api/buildings/{building_id}")

@@ -41,15 +41,11 @@ class FileProvider(DataProvider):
     profile_id = "hyderabad"
 
     def __init__(self) -> None:
-        self._buildings_collection = _load_geojson("all_buildings_processed.geojson")
-        self._floors_collection = _load_geojson("all_floor_ulpins.geojson")
-        # The full Telangana cadastral snapshot is intentionally not bundled
-        # until redistribution permission is confirmed. The derived building
-        # artifacts still run, while the parcel endpoint reports an empty
-        # collection on a clean clone.
-        self._parcels_collection = _load_geojson(
-            "study_area_cadastral_parcels.geojson", required=False
-        )
+        # Use parcel-free building evidence until Telangana cadastral
+        # redistribution permission is confirmed.
+        self._buildings_collection = _load_geojson("all_buildings_vertical_enriched.geojson")
+        self._floors_collection = {"type": "FeatureCollection", "features": []}
+        self._parcels_collection = {"type": "FeatureCollection", "features": []}
         self._topology = _load_csv("all_topology_results.csv")
         enriched_buildings, enriched_floors = ElevationAdapter().enrich(
             self._buildings_collection.get("features", []),

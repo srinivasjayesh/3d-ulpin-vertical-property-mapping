@@ -30,11 +30,11 @@ class ProfileConfig:
 
 
 def _registry() -> dict[str, ProfileConfig]:
+    from .amsterdam.config import PROFILE as amsterdam
     from .hyderabad.config import PROFILE as hyderabad
     from .manhattan.config import PROFILE as manhattan
-    from .mumbai.config import PROFILE as mumbai
 
-    return {item.profile_id: item for item in (hyderabad, manhattan, mumbai)}
+    return {item.profile_id: item for item in (hyderabad, manhattan, amsterdam)}
 
 
 def get_profile(profile_id: str) -> ProfileConfig:

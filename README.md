@@ -31,11 +31,11 @@ FastAPI JSON API
 Leaflet map + Three.js vertical viewer
 ```
 
-The default file backend is offline-friendly. PostGIS is an optional provider behind the same API contract. Profile selection uses `?profile=hyderabad|manhattan|mumbai`; `DATA_PROFILE` controls the default.
+The default file backend is offline-friendly. PostGIS is an optional provider behind the same API contract. Active profile selection uses `?profile=hyderabad|manhattan|amsterdam`; `DATA_PROFILE` controls the default.
 
 ## Key features
 
-- Multi-profile Hyderabad, Manhattan, and Mumbai study areas.
+- Multi-profile Hyderabad, Manhattan, and Amsterdam study areas.
 - Building, parcel/tax-lot context, floors, prototype 3D IDs, search, and topology endpoints.
 - Source-aware vertical source fusion and explicit pending states for DEM, BIM, and LiDAR.
 - Interactive floor selection, building isolation/context, study boundaries, roads, and below-ground demo compartments where supported.
@@ -54,15 +54,17 @@ The default file backend is offline-friendly. PostGIS is an optional provider be
 
 ### Hyderabad
 
-Nanakramguda / Financial District study area using OpenStreetMap building context, Google Open Buildings 2.5D height estimates, and Telangana TGRAC BhuNaksha cadastral matching. The published repository keeps processed building/floor demo outputs and retrieval code. The full BhuNaksha parcel snapshot is excluded because the service metadata does not provide a clear open-redistribution license; the clean-clone API therefore reports an empty parcel collection until the data is regenerated locally.
+Nanakramguda / Financial District study area using OpenStreetMap building context and Google Open Buildings 2.5D height estimates. Telangana BhuNaksha parcel data and all parcel-derived outputs are excluded because the service metadata does not provide a clear open-redistribution license.
 
 ### Manhattan
 
 Hudson Yards / West Midtown using NYC OTI Building Footprints, NYC DOF tax lots, and NYC DCP PLUTO. Source height and ground-elevation attributes are retained in processed profile artifacts. Floor counts are deterministic estimates where needed. Unit geometry is a deterministic subdivision for interaction testing, marked synthetic and unofficial.
 
-### Mumbai
+### Amsterdam
 
-MCGM G/South (Worli–Lower Parel) using an MCGM ward boundary, OpenStreetMap buildings/parts/streets, and BMC reference geometry for measured footprint comparison. Raw MCGM/BMC and OSM downloads are excluded; retrieval and audit scripts remain. Missing heights stay flat, and floors are generated only when explicit OSM height and level evidence pass the plausibility screen. Mumbai has no generated units or basements.
+Amsterdam Centrum uses OSM context plus locally regenerated PDOK BAG buildings and PDOK cadastral parcels. AHN terrain/LiDAR and PDOK orthophoto remain optional next-stage inputs. No apartment ownership or legal floor boundaries are inferred.
+
+The former Mumbai G/South profile and its MCGM/BMC-derived artifacts were retired because redistribution permission was unclear. They are not active application data.
 
 Detailed source and license decisions are in [docs/DATA_LICENSES.md](docs/DATA_LICENSES.md) and [data/README.md](data/README.md).
 
@@ -102,7 +104,7 @@ Useful API calls:
 GET /api/profiles
 GET /api/health?profile=hyderabad
 GET /api/stats?profile=manhattan
-GET /api/buildings/{building_id}?profile=mumbai
+GET /api/buildings/{building_id}?profile=amsterdam
 GET /api/buildings/{building_id}/floors
 GET /api/units/{prototype_unit_uid}?profile=manhattan
 GET /api/parcels
@@ -120,11 +122,11 @@ Run locally:
 .\.runtime\Scripts\python.exe -m pytest -q
 ```
 
-GitHub Actions runs the same pytest suite on Python 3.12 for pushes to `main` and pull requests. The public checkout intentionally skips tests that require excluded raw BMC snapshots and accepts zero or the local 194-feature Hyderabad parcel cache.
+GitHub Actions runs the same pytest suite on Python 3.12 for pushes to `main` and pull requests. The public checkout does not require excluded cadastral or municipal source snapshots.
 
 ## Pipeline and regeneration
 
-Root scripts `01`–`21` are preserved historical/demo scripts. The scalable pipeline is in `pipeline/01`–`09`; optional stages cover elevation, BIM, LiDAR, source fusion, and advanced topology. Manhattan rebuild instructions are in [docs/MANHATTAN_PROFILE.md](docs/MANHATTAN_PROFILE.md). Mumbai retrieval/build instructions are in [docs/MUMBAI_PROFILE.md](docs/MUMBAI_PROFILE.md). Hyderabad parcel retrieval and matching are in `pipeline/02_match_all_parcels.py` and related stages.
+Root scripts `01`–`21` are preserved historical/demo scripts. The scalable pipeline is in `pipeline/01`–`09`; optional stages cover elevation, BIM, LiDAR, source fusion, and advanced topology. Amsterdam public-data acquisition is in `pipeline/amsterdam/`. Manhattan rebuild instructions are in [docs/MANHATTAN_PROFILE.md](docs/MANHATTAN_PROFILE.md). Hyderabad parcel retrieval remains historical and must not be published without permission.
 
 Do not publish regenerated raw cadastral, BMC, LAS/LAZ, DEM, or large raster files without a fresh provider-specific license review.
 

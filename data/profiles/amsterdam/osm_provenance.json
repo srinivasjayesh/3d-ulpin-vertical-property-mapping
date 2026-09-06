@@ -1,0 +1,18 @@
+{
+  "source": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "bbox": [
+    52.358,
+    4.865,
+    52.392,
+    4.925
+  ],
+  "retrieved_at": "2026-09-06T11:57:22.474281+00:00",
+  "building_count": 31936,
+  "road_count": 11740,
+  "limitations": [
+    "OSM buildings are not authoritative cadastral boundaries.",
+    "No apartment units, ownership, parcels, or legal heights are inferred."
+  ]
+}

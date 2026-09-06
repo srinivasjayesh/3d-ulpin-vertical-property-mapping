@@ -47,7 +47,7 @@ def test_api_health_and_counts():
     assert health.status_code == 200
     assert health.json()["status"] == "ok"
     assert health.json()["buildings_loaded"] == 635
-    assert health.json()["floor_units_loaded"] == 2100
+    assert health.json()["floor_units_loaded"] == 0
     assert health.json()["parcels_loaded"] in {0, 194}
 
 
@@ -56,24 +56,37 @@ def test_api_stats():
     assert result.status_code == 200
     stats = result.json()
     assert stats["total_buildings"] == 635
-    assert stats["total_floor_units"] == 2100
+    assert stats["total_floor_units"] == 0
     assert stats["topology_errors"] == 0
     assert stats["topology_warnings"] == 7
 
 
-@pytest.mark.parametrize(
-    ("building_id", "confidence", "floors"),
-    [("B0595", 97.9, 23), ("B0612", 88.0, 18), ("B0589", 88.0, 10)],
-)
-def test_hero_buildings(building_id, confidence, floors):
+def test_viewport_buildings_api_is_bounded_and_validates_extent():
+    response = client.get(
+        "/api/buildings/viewport",
+        params={"west": 78.34, "south": 17.40, "east": 78.38, "north": 17.44, "limit": 5},
+    )
+    assert response.status_code == 200
+    result = response.json()
+    assert result["returned"] == len(result["features"]) == 5
+    assert result["truncated"] is True
+    assert result["display_filter"] == "FOOTPRINT_BOUNDS_INTERSECTION"
+    invalid = client.get(
+        "/api/buildings/viewport",
+        params={"west": 78.38, "south": 17.44, "east": 78.34, "north": 17.40},
+    )
+    assert invalid.status_code == 422
+
+
+@pytest.mark.parametrize("building_id", ["B0595", "B0612", "B0589"])
+def test_public_buildings_have_no_unverified_cadastral_claims(building_id):
     details = client.get(f"/api/buildings/{building_id}")
     assert details.status_code == 200
     properties = details.json()["building"]["properties"]
-    assert properties["cadastral_confidence_score"] == pytest.approx(confidence)
-    assert properties["selected_height_source"] == "GOOGLE_OPEN_BUILDINGS_2_5D"
+    assert "cadastral_confidence_score" not in properties
+    assert properties["google_height_m"] is not None
     floor_result = client.get(f"/api/buildings/{building_id}/floors")
-    assert floor_result.status_code == 200
-    assert len(floor_result.json()["features"]) == floors
+    assert floor_result.status_code == 404
 
 
 def test_prototype_ids_are_unique_and_unofficial():
@@ -81,9 +94,8 @@ def test_prototype_ids_are_unique_and_unofficial():
     values = [
         feature["properties"]["prototype_id"] for feature in provider.floor_features
     ]
-    assert len(values) == 2100
-    assert len(set(values)) == 2100
-    assert all(feature["properties"]["ulpin_is_official"] is False for feature in provider.floor_features)
+    assert len(values) == 0
+    assert len(set(values)) == 0
 
 
 def test_provider_fallback(monkeypatch):
@@ -103,6 +115,8 @@ def test_capabilities_are_honest():
     assert values["bim"] == "NOT_LOADED"
     assert values["lidar"] == "NOT_LOADED"
     assert values["absolute_z"] == "RELATIVE_Z_ONLY"
+    assert values["opentopography"] == "DEM_API_KEY_REQUIRED"
+    assert values["opentopography_scope"] == "GLOBAL_DEM_DSM_RASTER_ONLY_NOT_LIDAR"
 
 
 def test_bim_and_lidar_empty_states():
@@ -149,7 +163,9 @@ def test_protected_root_scripts_unchanged():
 def test_profiles_and_manhattan_stats():
     result = client.get("/api/profiles")
     assert result.status_code == 200
-    assert {item["profile_id"] for item in result.json()["profiles"]} == {"hyderabad", "manhattan", "mumbai"}
+    assert {item["profile_id"] for item in result.json()["profiles"]} == {
+        "hyderabad", "manhattan", "amsterdam"
+    }
     stats = client.get("/api/stats?profile=manhattan")
     assert stats.status_code == 200
     values = stats.json()
@@ -158,6 +174,18 @@ def test_profiles_and_manhattan_stats():
     assert values["total_floor_units"] == 1827
     assert values["total_vertical_units"] == 8130
     assert values["topology_errors"] == 0
+
+
+def test_amsterdam_open_data_profile_is_loaded_and_labeled():
+    health = client.get("/api/health?profile=amsterdam")
+    assert health.status_code == 200
+    values = health.json()
+    assert values["data_status"] == "LOCAL_ARTIFACTS_LOADED"
+    assert values["buildings_loaded"] > 0
+    assert values["roads_loaded"] > 0
+    assert values["parcels_loaded"] > 0
+    capabilities = client.get("/api/system/capabilities?profile=amsterdam").json()
+    assert capabilities["sources"]["AHN LiDAR/DEM/DSM"] == "OPEN_DATA_REGENERATION_READY"
 
 
 def test_manhattan_units_are_deterministic_and_synthetic():
@@ -199,27 +227,8 @@ def test_profile_capabilities_are_distinct():
     assert manhattan["data_profile"] == "manhattan"
     assert manhattan["unit_geometry"] == "SYNTHETIC_DEMO"
     assert manhattan["ground_elevation"] == "ACTIVE_SOURCE_ATTRIBUTE"
-    mumbai = client.get("/api/system/capabilities?profile=mumbai").json()
-    assert mumbai["data_profile"] == "mumbai"
-    assert mumbai["unit_geometry"] == "NOT_AVAILABLE"
-    assert mumbai["sources"]["MCGM G/South Ward Boundary"] == "ACTIVE"
-    assert mumbai["sources"]["BMC Reference Footprints"] == "ACTIVE_GEOMETRY_COMPARISON"
-
-
-def test_mumbai_profile_endpoints():
-    health = client.get("/api/health?profile=mumbai")
-    assert health.status_code == 200
-    assert health.json()["buildings_loaded"] == 4626
-    assert health.json()["roads_loaded"] == 1803
-    stats = client.get("/api/stats?profile=mumbai")
-    assert stats.status_code == 200
-    assert stats.json()["total_floor_units"] == 1046
-    roads = client.get("/api/roads?profile=mumbai")
-    assert roads.status_code == 200
-    assert roads.json()["features"]
-    ward = client.get("/api/ward?profile=mumbai")
-    assert ward.status_code == 200
-    assert ward.json()["features"][0]["properties"]["ward_name"] == "G/S"
+    unavailable = client.get("/api/health?profile=mumbai")
+    assert unavailable.status_code == 400
 
 
 def test_frontend_below_ground_and_unit_ulpin_controls():

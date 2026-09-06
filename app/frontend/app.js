@@ -1078,7 +1078,8 @@ async function loadCapabilities() {
     systemCapabilities = await api("/api/system/capabilities");
     const entries = { ...systemCapabilities.sources, PostGIS: systemCapabilities.postgis, DEM: systemCapabilities.dem,
         "Ground elevation": systemCapabilities.ground_elevation, BIM: systemCapabilities.bim,
-        LiDAR: systemCapabilities.lidar, "Unit geometry": systemCapabilities.unit_geometry };
+        "OpenTopography": systemCapabilities.opentopography, LiDAR: systemCapabilities.lidar,
+        "Unit geometry": systemCapabilities.unit_geometry };
     document.getElementById("capabilities").innerHTML = `<div class="dossier-section"><h3>${safe(currentProfileConfig.label)} Capabilities</h3><div class="capability-grid">${Object.entries(entries).map(([name, value]) => `<span>${safe(name)}</span><span class="capability-state">${safe(value)}</span>`).join("")}</div></div>`;
 }
 
@@ -1120,10 +1121,17 @@ async function switchProfile(profileId) {
     renderHeroButtons();
     document.getElementById("map-subtitle").textContent = currentProfile === "manhattan"
         ? "NYC building footprints + Digital Tax Map lots"
-        : (currentProfile === "mumbai" ? "G/South · Worli–Lower Parel · BMC + OSM sources" : "OSM building footprints + Telangana cadastral context");
+        : (currentProfile === "mumbai" ? "G/South · Worli–Lower Parel · BMC + OSM sources"
+            : (currentProfile === "amsterdam" ? "PDOK BAG/BGT + AHN open-data benchmark"
+                : "OSM building footprints + Telangana cadastral context"));
     document.getElementById("dossier-subtitle").textContent = currentProfile === "manhattan"
         ? "Building, floor and synthetic unit demonstration"
-        : (currentProfile === "mumbai" ? "Building, floors and MCGM/OSM source provenance" : "Building, floors and cadastral interpretation");
+        : (currentProfile === "mumbai" ? "Building, floors and MCGM/OSM source provenance"
+            : (currentProfile === "amsterdam" ? "Open-data sources; local artifacts not loaded" : "Building, floors and cadastral interpretation"));
+    document.getElementById("viewer-title").textContent = "No building selected";
+    document.getElementById("viewer-subtitle").textContent = currentProfile === "amsterdam"
+        ? "Download PDOK/AHN artifacts to enable the 3D view"
+        : "Select a building from the map";
     document.getElementById("unit-mode-btn").disabled = currentProfile !== "manhattan";
     document.getElementById("floor-mode-btn").disabled = false;
     for (const id of ["below-ground-btn", "below-focus-btn"]) {
@@ -1140,7 +1148,7 @@ async function switchProfile(profileId) {
     const hero = currentProfileConfig.default_hero || currentProfileConfig.hero_buildings?.[0];
     if (hero) await selectBuilding(hero);
     renderDossier();
-    setStatus(`${currentProfileConfig.label} ready`);
+    setStatus(contextBuildings.length ? `${currentProfileConfig.label} ready` : `${currentProfileConfig.label}: local data not loaded`);
 }
 
 

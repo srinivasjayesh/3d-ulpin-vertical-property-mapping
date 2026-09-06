@@ -32,6 +32,12 @@ data/**/*.tiff
 data/**/*.las
 data/**/*.laz
 data/**/*.ifc
+
+# Amsterdam PDOK source extracts are local-only until each dataset's current
+# redistribution terms are reviewed and attribution packaging is approved.
+data/profiles/amsterdam/buildings.geojson
+data/profiles/amsterdam/parcels.geojson
+data/profiles/amsterdam/pdok_provenance.json
 data/**/raw/
 
 # Telangana cadastral snapshots: source license does not grant clear

@@ -1,1 +1,0 @@
-{"topology_errors":0,"topology_warnings":1,"issues":[{"source":"OSM_way_1431143550","issue":"INVALID_SOURCE_FOOTPRINT_EXCLUDED"}],"validation_scope":"Exported polygons are valid; source-invalid footprints excluded. Strata have contiguous non-overlapping relative Z. No survey verification."}

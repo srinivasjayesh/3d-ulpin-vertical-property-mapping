@@ -5,9 +5,9 @@ from __future__ import annotations
 import os
 
 from .base import DataProvider
+from .amsterdam_file_provider import AmsterdamFileProvider
 from .file_provider import FileProvider
 from .manhattan_file_provider import ManhattanFileProvider
-from .mumbai_file_provider import MumbaiFileProvider
 
 
 def _file_provider(profile: str) -> DataProvider:
@@ -15,8 +15,8 @@ def _file_provider(profile: str) -> DataProvider:
         return FileProvider()
     if profile == "manhattan":
         return ManhattanFileProvider()
-    if profile == "mumbai":
-        return MumbaiFileProvider()
+    if profile == "amsterdam":
+        return AmsterdamFileProvider()
     raise ValueError(f"Unsupported DATA_PROFILE={profile!r}")
 
 
@@ -45,4 +45,7 @@ def create_provider(profile: str | None = None) -> DataProvider:
     return provider
 
 
-__all__ = ["DataProvider", "FileProvider", "ManhattanFileProvider", "MumbaiFileProvider", "create_provider"]
+__all__ = [
+    "AmsterdamFileProvider", "DataProvider", "FileProvider",
+    "ManhattanFileProvider", "create_provider",
+]
