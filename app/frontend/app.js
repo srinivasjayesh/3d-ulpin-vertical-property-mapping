@@ -143,7 +143,7 @@ function buildingStyle(feature) {
 
 
 function parcelStyle() {
-    if (currentProfile === "manhattan") {
+    if (currentProfile === "manhattan" || currentProfile === "amsterdam") {
         return { color: "#8d806a", weight: 0.8, fillColor: "#766b59", fillOpacity: 0.07 };
     }
     return { color: "transparent", weight: 0, fillOpacity: 0 };
